@@ -1,8 +1,0 @@
-language: python
-compiler:
-- clang
-before_install:
-  - chmod +x ./build.sh
-install: ""
-script:
-  - ./build.sh
