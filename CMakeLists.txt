@@ -1,0 +1,34 @@
+﻿CMAKE_MINIMUM_REQUIRED( VERSION 3.3.0 )
+PROJECT( pybackoff CXX )
+
+SET( CMAKE_CXX_STANDARD 11 )
+SET( CMAKE_CXX_STANDARD_REQUIRED ON )
+
+INCLUDE( CheckCXXCompilerFlag )
+
+SET( PACKAGE_VERSION "0.1.1" )
+
+ADD_SUBDIRECTORY("lib/pybind11")
+FIND_PACKAGE(PythonInterp 3)
+FIND_PACKAGE(PythonLibs   3)
+
+INCLUDE_DIRECTORIES(
+  ${PYTHON_INCLUDE_DIRS}
+  ${PYBIND11_INCLUDE_DIRS}
+)
+
+ADD_LIBRARY( pybackofflib SHARED 
+    "src/pybackoff.cc" 
+)
+
+CONFIGURE_FILE( pybackoff/__init__.py
+    ${CMAKE_CURRENT_BINARY_DIR}/pybackoff/__init__.py
+)
+
+CONFIGURE_FILE( setup.py
+    ${CMAKE_CURRENT_BINARY_DIR}/setup.py
+)
+
+INSTALL(TARGETS pybackofflib
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/pybackoff 
+)
