@@ -21,6 +21,6 @@ setup(
     packages=find_packages(),
     python_requires='>=3.6',
     package_data={
-        'pybackoff': ['pybackoff.so', 'gutenberg.dat']
+        'pybackoff': ['pybackoff.so']
     }
 )

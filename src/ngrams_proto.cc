@@ -1,7 +1,6 @@
 #include "ngrams_proto.h"
 #include "fnv.h"
 #include "slice.h"
-
 #include <iostream>
 #include <fstream>
 #include <iomanip>

@@ -41,6 +41,7 @@
 /out
 
 *.bat
+*.json
 
 #python
 /build

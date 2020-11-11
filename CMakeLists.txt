@@ -6,9 +6,8 @@ SET( CMAKE_CXX_STANDARD_REQUIRED ON )
 
 INCLUDE( CheckCXXCompilerFlag )
 
-SET( PACKAGE_VERSION "0.1.1" )
-#SET(Boost_LIBRARY_DIR C:/boost_1_74_0/boost_1_74_0/libs)
-#SET(Boost_INCLUDE_DIR C:/boost_1_74_0/boost_1_74_0)
+SET(Boost_LIBRARY_DIR C:/boost_1_74_0/boost_1_74_0/libs)
+SET(Boost_INCLUDE_DIR C:/boost_1_74_0/boost_1_74_0)
 
 FIND_PACKAGE(PythonInterp 3)
 FIND_PACKAGE(PythonLibs   3)
@@ -23,7 +22,7 @@ INCLUDE_DIRECTORIES(
   ${PYBIND11_INCLUDE_DIRS}
 )
 
-ADD_LIBRARY( pybackofflib SHARED 
+ADD_LIBRARY( pybackoff SHARED 
     "src/pybackoff.cc" 
 )
 
@@ -34,4 +33,3 @@ CONFIGURE_FILE( pybackoff/__init__.py
 CONFIGURE_FILE( setup.py
     ${CMAKE_CURRENT_BINARY_DIR}/setup.py
 )
-
