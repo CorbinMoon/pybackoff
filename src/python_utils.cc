@@ -12,6 +12,15 @@ Trigram pytupleToTrigram(const py::tuple& t) {
    );
 }
 
+py::tuple trigramToPytuple(const Trigram& t) {
+   py:tuple tuple(
+      std::get<0>(t),
+      std::get<1>(t),
+      std::get<2>(t)
+   );
+   return tuple;
+}
+
 std::vector<Trigram> pytupleListToVector(const py::list& l) {
    std::vector<Trigram> trigrams;
 
@@ -40,18 +49,10 @@ std::map<uint64_t, float> pydictToCountsMap(const py::dict& d) {
 py::dict countsMapToPydict(const std::map<uint64_t, float>& counts) {
    py::dict dict;
 
-   for (auto& p : counts) dict[p.first] = p.second;
+   for (auto& p : counts) 
+      dict[p.first] = p.second;
   
    return dict;
-}
-
-py::tuple trigramToPytuple(const Trigram& t) {
-   py:tuple tuple(
-      std::get<0>(t),
-      std::get<1>(t),
-      std::get<2>(t)
-   );
-   return tuple;
 }
 
 py::tuple vectorToPytupleList(std::vector<Trigram>& v) {
