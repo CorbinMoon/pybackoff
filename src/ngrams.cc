@@ -21,9 +21,9 @@ Ngrams::save(const std::string& path) {
 }
 
 Ngrams::size() {
-   this->ngrams_proto.getSize();
+   return this->ngrams_proto.getSize();
 }
 
-Ngrams::counts() {
-   this->counts;
+Ngrams::countsDict() {
+   return this->counts;
 }

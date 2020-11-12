@@ -16,7 +16,8 @@ private:
 
 public:
    std::map<Trigram, float> score(const std::vector<Trigram>& trigrams);
-   SBModel_Prototype(const std::map<uint64_t, float>& counts, size_t N);
+   void init(const std::map<uint64_t, float>& counts, size_t N);
+   SBModel_Prototype();
 
 };
 

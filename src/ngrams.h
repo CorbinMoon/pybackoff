@@ -14,11 +14,11 @@ private:
 
 public:
    Ngrams();
-   ngrams(const py::list& trigrams);
+   void ngrams(const py::list& trigrams);
    void load(const std::string& corpus);
    void save(const std::string& path);
    size_t size();
-   py::dict counts();
+   py::dict countsDict();
 
 };
 

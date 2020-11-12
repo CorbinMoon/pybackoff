@@ -2,8 +2,9 @@
 #include "fnv.h"
 #include "slice.h"
 
+SBModel_Prototype::SBModel_Prototype() {}
 
-SBModel_Prototype::SBModel_Prototype(const std::map<uint64_t, float>& counts, size_t N) {
+SBModel_Prototype::init(const std::map<uint64_t, float>& counts, size_t N) {
     this->counts = counts;
     this->N = N;
 }

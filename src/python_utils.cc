@@ -50,6 +50,7 @@ std::map<K, V> pydictToMap(const py::dict& d) {
    return map;
 }
 
+
 template<class K, class V>
 py::dict mapToPydict(const std::map<K, V>& map) {
    py::dict dict;
@@ -57,6 +58,18 @@ py::dict mapToPydict(const std::map<K, V>& map) {
    for (auto& p : map) 
       dict[p.first] = p.second;
   
+   return dict;
+}
+
+template<class K, class V>
+py::dict mapToScoreDict(const std::map<K, V>& map) {
+   py::dict dict;
+
+   for (auto& p : map) {
+      auto& t = trigramToPytuple<std::string>(p.first);
+      dict[p.first] = p.second;
+   }
+
    return dict;
 }
 

@@ -37,4 +37,8 @@ template<class T>
 py::tuple vectorToPytupleList(std::vector<T>& v);
 
 
+template<class K, class V>
+py::dict mapToScoreDict(const std::map<K, V>& map);
+
+
 #endif //PYTHON_UTILS_H
