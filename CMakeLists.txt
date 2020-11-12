@@ -6,8 +6,9 @@ SET( CMAKE_CXX_STANDARD_REQUIRED ON )
 
 INCLUDE( CheckCXXCompilerFlag )
 
-SET(Boost_LIBRARY_DIR C:/boost_1_74_0/boost_1_74_0/libs)
-SET(Boost_INCLUDE_DIR C:/boost_1_74_0/boost_1_74_0)
+# For local use only
+# SET(Boost_LIBRARY_DIR C:/boost_1_74_0/boost_1_74_0/libs)
+# SET(Boost_INCLUDE_DIR C:/boost_1_74_0/boost_1_74_0)
 
 FIND_PACKAGE(PythonInterp 3)
 FIND_PACKAGE(PythonLibs   3)
