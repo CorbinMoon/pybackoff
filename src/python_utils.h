@@ -13,13 +13,28 @@
 namespace py = boost::python;
 
 
-Trigram pytupleToTrigram(const py::tuple& t);
+template<class T>
+T pytupleToTrigram(const py::tuple& t);
 
-std::vector<Trigram> pytupleListToVector(const py::list& l);
 
-std::map<uint64_t, float> pydictToCountsMap(const py::dict& d);
+template<class T>
+py::tuple trigramToPytuple(const T& t);
 
-py:tuple trigramToPytuple(const Trigram& t);
+
+template<class T>
+std::vector<T> pytupleListToVector(const py::list& l);
+
+
+template<class K, class V>
+std::map<K, V> pydictToMap(const py::dict& d);
+
+
+template<class K, class V>
+py::dict mapToPydict(const std::map<K, V>& map);
+
+
+template<class T>
+py::tuple vectorToPytupleList(std::vector<T>& v);
 
 
 #endif //PYTHON_UTILS_H

@@ -4,15 +4,17 @@
 namespace py = boost::python;
 
 
-Trigram pytupleToTrigram(const py::tuple& t) {
+template<class T>
+T pytupleToTrigram(const py::tuple& t) {
    return std::make_tuple(
-      py::extract<std::string>(t[0]),
-      py::extract<std::string>(t[1]),
-      py::extract<std::string>(t[2])
+      py::extract<T>(t[0]),
+      py::extract<T>(t[1]),
+      py::extract<T>(t[2])
    );
 }
 
-py::tuple trigramToPytuple(const Trigram& t) {
+template<class T>
+py::tuple trigramToPytuple(const T& t) {
    py:tuple tuple(
       std::get<0>(t),
       std::get<1>(t),
@@ -21,45 +23,49 @@ py::tuple trigramToPytuple(const Trigram& t) {
    return tuple;
 }
 
-std::vector<Trigram> pytupleListToVector(const py::list& l) {
-   std::vector<Trigram> trigrams;
+template<class T>
+std::vector<T> pytupleListToVector(const py::list& l) {
+   std::vector<T> v;
 
    for (size_t i = 0; i < py::len(l); i++) {
       auto& t = py::extract<py::tuple>(l[i]);
-      auto& trigram = pytupleToTrigram(t);
-      trigrams.push_back(trigram);
+      auto& trigram = pytupleToTrigram<T>(t);
+      v.push_back(trigram);
    }
 
    return trigrams;
 }
 
-std::map<uint64_t, float> pydictToCountsMap(const py::dict& d) {
+template<class K, class V>
+std::map<K, V> pydictToMap(const py::dict& d) {
    py::list items = d.items();
-   std::map<uint64_t, float> counts;
+   std::map<K, V> map;
 
    for (size_t i = 0; i < py::len(items); i++) {
-      auto& key = py::extract<uint64_t>(items[i][0]);
-      auto& val = py::extract<float>(items[i][1]);
-      counts[key] = val;
+      auto& key = py::extract<K>(items[i][0]);
+      auto& val = py::extract<V>(items[i][1]);
+      map[key] = val;
    }
 
-   return counts;
+   return map;
 }
 
-py::dict countsMapToPydict(const std::map<uint64_t, float>& counts) {
+template<class K, class V>
+py::dict mapToPydict(const std::map<K, V>& map) {
    py::dict dict;
 
-   for (auto& p : counts) 
+   for (auto& p : map) 
       dict[p.first] = p.second;
   
    return dict;
 }
 
-py::tuple vectorToPytupleList(std::vector<Trigram>& v) {
+template<class T>
+py::tuple vectorToPytupleList(std::vector<T>& v) {
    py::list list;
 
    for (auto& elem : v) {
-      auto& t = trigramToPytuple(elem);
+      auto& t = trigramToPytuple<T>(elem);
       list.append(t);
    }
 
