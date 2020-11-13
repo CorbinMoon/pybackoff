@@ -15,4 +15,7 @@ BOOST_PYTHON_MODULE(pybackoff) {
       .def("size", &Ngrams::size)
       .def("counts", &Ngrams::countsDict);
 
+   py::class_<SBModel>("SBModel", py::init<py::dict, size_t>())
+      .def("score", &SBModel::score);
+
 }
