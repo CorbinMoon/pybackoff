@@ -1,0 +1,12 @@
+language: python
+
+python:
+  - "3.8"
+
+before_install:
+  - chmod +x bin/install.sh
+  - ./bin/install.sh
+
+script:
+  - chmod +x bin/build.sh
+  - ./bin/build.sh
